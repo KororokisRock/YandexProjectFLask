@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <h2>Имя пользователя: {{ user.name }}</h2>
+        <div>ID пользователя: {{ user.id }}</div>
+        <div>Почта: {{ user.email }}</div>
+        <div>Описание: {{ user.description }}</div>
+        <div>Статус: {{ status.name }}</div>
+        <div>Команда: {{ command.name }}</div>
+        <div class="row mt-2">
+        {% if current_user.id == user.id %}
+        <div class="col"><a href="../jobs" class="btn btn-primary">Перейти к задачам</a></div>
+        {% endif %}
+        <div class="col"><a href="../users" class="btn btn-primary">Перейти к списку команды</a></div>
+        {% if (current_user_status.level_redact_profile > status.level_redact_profile and status.id != -1 ) or current_user.id == user.id or current_user_status.id == -1 %}
+        <div class="col"><a href="../user_redact/{{ user.id }}" class="btn btn-primary">Редактирование профиля</a></div>
+        {% endif %}
+        </div>
+        {% if user.id == current_user.id or current_user_status.id == -1 %}
+        <form action="" method="post">
+                <div>{{ form.submit(class="btn btn-danger mt-5") }}</div>
+        </form>
+        {% endif %}
+{% endblock %}

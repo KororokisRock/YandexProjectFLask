@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>{{ job.title }}</h2>
+    <div>Описание: {{ job.description }}</div><br>
+    <div>Имя пользователя: {{ user.name }}</div>
+    <div>ID пользователя: {{ user.id }}</div>
+    {% if job.complete %}
+    <div>Выполнено</div>
+    {% else %}
+    <div>Не выполнено</div>
+    {% endif %}
+    <div>Дата начала: {{ job.start_date }}</div>
+    <div>Дата окончания: {{ job.end_date }}</div>
+    <div><a href="../jobs" class="btn btn-primary">Назад</a></div>
+
+{% endblock %}

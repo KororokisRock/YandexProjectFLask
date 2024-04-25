@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div><a href="../users/{{ user.id }}" class="btn btn-primary">Назад</a></div>
+<form action="" method="post">
+    {% for field in form if field[0].name != 'csrf_token' %}
+        {% if field[0].name != 'submit' %}
+            <div>{{ field[0].label() }}</div>
+            <div>{{ field[0](value=field[1]) }}</div>
+        {% else %}
+            <div>{{ field[0](class="btn btn-primary mt-2") }}</div>
+        {% endif %}
+        {% for error in field[0].errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    {% endfor %}
+</form>
+{% endblock %}

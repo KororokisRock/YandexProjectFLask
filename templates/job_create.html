@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="" method="post">
+        <div>
+            {{ forms.title.label() }}
+            {{ forms.title() }}
+            {% for error in forms.title.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ forms.description.label() }}
+            {{ forms.description() }}
+            {% for error in forms.description.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ forms.start_date.label() }}
+            {{ forms.start_date() }}
+            {% for error in forms.start_date.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ forms.end_date.label() }}
+            {{ forms.end_date() }}
+            {% for error in forms.end_date.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ forms.user_id.label() }}
+            {{ forms.user_id() }}
+            {% for error in forms.user_id.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+        
+        <div>
+            {{ forms.submit(class="btn btn-primary") }}
+            {% for error in forms.submit.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+</form>
+<div><a href="./jobs" class="btn btn-primary mt-2">Назад</a></div>
+{% endblock %}

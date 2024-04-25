@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div><a href="./users/{{ current_user.id }}" class="btn btn-primary mb-2">Назад</a></div>
+    {% if current_user_status.level_job > 0 or current_user.status.id == -1 %}
+    <div><a href="jobs_create" class="btn btn-primary">Поставить задачу</a></div>
+    {% endif %}
+    {% for job in jobs %}
+    <h2>{{ job[0].title }}</h2>
+    <div>Описание: {{ job[0].description }}</div><br>
+    <div>Имя пользователя: {{ job[1].name }}</div>
+    <div>ID пользователя: {{ job[1].id }}</div>
+    {% if job[0].complete %}
+    <div>Выполнено</div>
+    {% else %}
+    <div>Не выполнено</div>
+    {% endif %}
+    <div>Дата начала: {{ job[0].start_date }}</div>
+    <div>Дата окончания: {{ job[0].end_date }}</div>
+    <div><a href="jobs\{{ job[0].id }}" class="btn btn-primary">Посмотреть</a></div>
+    {% endfor %}
+
+{% endblock %}

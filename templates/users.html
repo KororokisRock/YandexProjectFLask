@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div><a href="./users/{{ current_user.id }}" class="btn btn-primary">Назад</a></div>
+    {% for user in users %}
+        <h2>Имя пользователя: {{ user[0].name }}</h2>
+        <div>ID пользователя: {{ user[0].id }}</div>
+        <div>Описание: {{ user[0].description }}</div>
+        <div>Почта: {{ user[0].email }}</div>
+        <div>Статус: {{ user[1].name }}</div>
+        <div><a href="./users/{{ user[0].id }}" class="btn btn-primary">Перейти в профиль</a></div>
+    {% endfor %}
+{% endblock %}
